@@ -3,7 +3,7 @@
     $email = $_POST['name'];
     $password = $_POST['password'];
 
-
+    //ONLy FOR TEST 
     echo ".$email";
     echo ".$password";
 
@@ -26,6 +26,9 @@ else{
         $data = $stmt_result->fetch_assoc();
         if($data['password'] == $password){
             echo "<h2>Loggin Successfully</h2>";
+            session_start();
+            $_SESSION["loggin"] = $email;
+            header("Location: index.html");
         }   
         else{
             echo "<h2>Invalid Email or passsword</h2>";
