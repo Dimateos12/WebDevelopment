@@ -129,49 +129,77 @@
       </div>
 
       <p class="text-center">or:</p>
-      <form>
-      <!-- Name input -->
-      <div class="form-outline mb-4">
-        <input type="text" id="registerName" class="form-control" />
-        <label class="form-label" for="registerName">Name</label>
-      </div>
+      <form action="register.php" method="post">
+        <!-- Name input -->
+        <div class="form-outline mb-4">
+          <input type="text" id="registerName" class="form-control" name="name"/>
+          <label class="form-label" for="registerName">Name</label>
+        </div>
 
-      <!-- Username input -->
-      <div class="form-outline mb-4">
-        <input type="text" id="registerUsername" class="form-control" />
-        <label class="form-label" for="registerUsername">Username</label>
-      </div>
+        <!-- Surname input -->
+        <div class="form-outline mb-4">
+          <input type="text" id="registerSurname" class="form-control" name="surname"/>
+          <label class="form-label" for="registerSurname">Surname</label>
+        </div>
 
-      <!-- Email input -->
-      <div class="form-outline mb-4">
-        <input type="email" id="registerEmail" class="form-control" />
-        <label class="form-label" for="registerEmail">Email</label>
-      </div>
+        <!-- Birthday input -->
+        <div class="form-outline mb-4">
+          <input type="date" id="registerBirthday" class="form-control" name="bday"/>
+          <label class="form-label" for="registerBirthday">Birthday</label>
+        </div>
 
-      <!-- Password input -->
-      <div class="form-outline mb-4">
-        <input type="password" id="registerPassword" class="form-control" />
-        <label class="form-label" for="registerPassword">Password</label>
-      </div>
+        <!-- Sex input -->
+        <div class="form-outline mb-4">
+          <input type="radio" name="sex" id="male_sex" value="male" />
+          <label for="male_sex">Male</label>
 
-      <!-- Repeat Password input -->
-      <div class="form-outline mb-4">
-        <input type="password" id="registerRepeatPassword" class="form-control" />
-        <label class="form-label" for="registerRepeatPassword">Repeat password</label>
-      </div>
+          <input type="radio" name="sex" id="female_sex" value="female" />
+          <label for="female_sex">Female</label>
+        </div>
 
-      <!-- Checkbox -->
-      <div class="form-check d-flex justify-content-center mb-4">
-        <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
-          aria-describedby="registerCheckHelpText" />
-        <label class="form-check-label" for="registerCheck">
-          I have read and agree to the terms
-        </label>
-      </div>
+        <!-- Tel input -->
+        <div class="form-outline mb-4">
+          <input type="tel" id="registerTelephone" class="form-control" name="telephone"/>
+          <label class="form-label" for="registerTelephone">Telephone</label>
+        </div>
 
-      <!-- Submit button -->
-      <button type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+          <input type="email" id="registerEmail" class="form-control" name="email"/>
+          <label class="form-label" for="registerEmail">Email</label>
+        </div>
+
+        <!-- Username input -->
+        <div class="form-outline mb-4">
+          <input type="text" id="registerUsername" class="form-control" name="username"/>
+          <label class="form-label" for="registerUsername">Username</label>
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+          <input type="password" id="registerPassword" class="form-control" name="password"/>
+          <label class="form-label" for="registerPassword">Password</label>
+        </div>
+
+        <!-- Repeat Password input -->
+        <div class="form-outline mb-4">
+          <input type="password" id="registerRepeatPassword" class="form-control" name="reppassword"/>
+          <label class="form-label" for="registerRepeatPassword">Repeat password</label>
+        </div>
+
+        <!-- Checkbox -->
+        <div class="form-check d-flex justify-content-center mb-4">
+          <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
+            aria-describedby="registerCheckHelpText" />
+          <label class="form-check-label" for="registerCheck">
+            I have read and agree to the terms
+          </label>
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
     </form>
-  </div>
+    </form>
+    </div>
 </div>
 <!-- Pills content -->
