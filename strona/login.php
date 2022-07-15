@@ -17,7 +17,7 @@ if($conncetion->connect_error){
 
 }
 else{
-    echo "Connect works !";
+    //echo "Connect works !";
     $stmt = $conncetion ->prepare("select * from user where username = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -29,12 +29,12 @@ else{
             session_start();
             $_SESSION["loggin"] = $email;
             header("Location: index.html");
-        }   
+        }
         else{
-            echo "<h2>Invalid Email or passsword</h2>";
+
         }
     }else{
-        echo "<h2>Invalid Email or passsword</h2>";
+        header("Location: logginform.html");
     }
 }
 
