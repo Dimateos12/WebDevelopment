@@ -45,8 +45,8 @@
                                 </div>
 
                                 <div class="form-outline mb-4">
-                                    <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
-                                    <label class="form-label" name="cpassword" for="form3Example4cdg">Repeat your password</label>
+                                    <input type="password" id="form3Example4cdg" name="repassword" class="form-control form-control-lg" />
+                                    <label class="form-label" " for="form3Example4cdg">Repeat your password</label>
                                 </div>
 
                                 <div class="form-check d-flex justify-content-center mb-5">
@@ -60,7 +60,7 @@
                                     <button type="submit" name="register_btn" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
                                 </div>
 
-                                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!" class="fw-bold text-body"><u>Login here</u></a></p>
+                                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="login.php" class="fw-bold text-body"><u>Login here</u></a></p>
                             </form>
 
                         </div>
