@@ -1,7 +1,3 @@
-<?php
-require_once('component.php')
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <!-- Font Awesome -->
