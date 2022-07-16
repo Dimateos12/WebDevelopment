@@ -1,4 +1,5 @@
-<footer class="footer_section">
+
+  <footer class="footer_section">
     <div class="container">
       <div class="row">
         <div class="col-md-6 col-lg-3 footer-col">
@@ -110,9 +111,13 @@
       $("#includedContent").load("../htmlads.html");
     });
   </script>
+
+
+
   <script type='text/javascript' style='display:none;' async>
   </script>
 
   <script type="text/javascript" data-cfasync="false"></script>
 </body>
+
 </html>

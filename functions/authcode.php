@@ -49,6 +49,8 @@ else if(isset($_POST['login_btn'])){
         $userdate = mysqli_fetch_array($login_query_run);
         $username = $userdate['name'];
         $email = $userdate['email'];
+        $role_as = $userdate['role_as'];
+
 
 
         $_SESSION['auth_user'] = [
@@ -56,9 +58,19 @@ else if(isset($_POST['login_btn'])){
             'email' => $email
         ];
 
+        $_SESSION['role_as'] = $role_as;
+
+        if($role_as == 1){
+        
+            $_SESSION['message'] = "Welcome to Dashboard";
+            header('Location: ../admin/index.php');
+        
+    
+    }
+    else{
         $_SESSION['message'] = "Loggin in successfully";
         header('Location: ../index.php');
-
+    }
     }
     else{
         $_SESSION['message'] = "Invalid Credentials";

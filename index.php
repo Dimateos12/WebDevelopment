@@ -1,4 +1,6 @@
-<?php session_start(); include("includes/header.php");  ?>
+<?php include("includes/header.php"); 
+    
+?>
 
 <h1>Hello, world!</h1>
 
