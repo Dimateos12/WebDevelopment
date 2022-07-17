@@ -11,7 +11,7 @@ include('../middleware/adminMiddleware.php')
                 <div class="card-header">
                     <h4>Add Category</h4>
                 </div>
-                <form action="code" method="POST" enctype="multipart/form-data">
+                <form action="code.php" method="POST" enctype="multipart/form-data">
                     <div class="card-body">
                         <form action="" method="POST" enctype="multipart/form-data">
                             <div class="row">
@@ -41,7 +41,7 @@ include('../middleware/adminMiddleware.php')
 
                                 <div class="col-md-12">
                                     <label for="">Meta Description</label>
-                                    <textarea row="3" name="meta_kdescription" placeholder="Enter meta description" class="form-control"></textarea>
+                                    <textarea row="3" name="meta_description" placeholder="Enter meta description" class="form-control"></textarea>
                                 </div>
 
                                 <div class="col-md-12">
