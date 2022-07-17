@@ -9,6 +9,19 @@ function getAll($table){
     return $query_run;
 }
 
+function getByID($table, $id){
+    global $con;
+    $query = "SELECT * FROM $table WHERE id='$id' ";
+    $query_run = mysqli_query($con,$query);
+    return $query_run;
+}
+
+function getByName($table, $name){
+    global $con;
+    $query = "SELECT * FROM $table WHERE name='$name' ";
+    $query_run = mysqli_query($con,$query);
+    return $query_run;
+}
 
 
 function redirect($url, $message){
