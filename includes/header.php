@@ -647,7 +647,6 @@
             </ul>
 
             <?php
-
             if (isset($_SESSION['auth'])) {
             ?>
               <div class="user_option-box">
@@ -667,10 +666,12 @@
                 </a>
               </div>
               </a>
-            <?php
-            } else {
+
+
+            <?php }
+              else {
             ?>
-              <div class="user_option-box">
+           <div class="user_option-box">
                 <a href="personalpage.phpl">
                   <i class="fa fa-user" href="" aria-hidden="true"></i>
                 </a>
@@ -688,10 +689,9 @@
               </div>
               </a>
 
-            <?php } ?>
-            <!-- if is loggin in to personal page if its not to loggin page  -->
-
-
+              <?php
+            }
+            ?>
 
 
 

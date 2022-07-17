@@ -14,10 +14,10 @@ if(isset($_POST['register_btn'])){
     
     if($password == $repassword){
         // Insert user data 
-        $insert_query = "INSERT INTO users (name, email, phone, password) VALUES('$name', '$email', '$phone', '$password')";
+        $insert_query = "INSERT INTO users (name,email,phone,password) VALUES('$name','$email','$phone','$password')";
         $insert_query_run = mysqli_query($con,$insert_query);
 
-        if($insert_query_runns){
+        if(!    $insert_query_runns){
             $_SESSION["message"] = "Registered Succesfully";
             header("Location: ../login.php");
         }
