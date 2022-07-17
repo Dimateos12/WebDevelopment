@@ -4,6 +4,16 @@ include('../middleware/adminMiddleware.php')
 
 ?>
 
+
+<?php if (isset($_SESSION['message'])) { ?>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Hey!</strong> <?= $_SESSION['message']; ?>
+    </div>
+<?php
+    unset($_SESSION['message']);
+} ?>
+
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -11,9 +21,9 @@ include('../middleware/adminMiddleware.php')
                 <div class="card-header">
                     <h4>Add Category</h4>
                 </div>
-                <form action="code.php" method="POST" enctype="multipart/form-data">
+              
                     <div class="card-body">
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="code.php" method="POST" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="">Name</label>
@@ -66,7 +76,7 @@ include('../middleware/adminMiddleware.php')
                             </div>
                         </form>
                     </div>
-                </form>
+                
             </div>
         </div>
     </div>
