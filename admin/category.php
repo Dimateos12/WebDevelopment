@@ -43,7 +43,8 @@ include('../config/dbcon.php');
                 </thead>
                 <tbody>
                     <?php
-                   $categories = "categories";
+                 
+                 $categories = "categories";
                     $query = "SELECT * FROM $categories";
                     $category= mysqli_query($con,$query);
                    
@@ -62,6 +63,9 @@ include('../config/dbcon.php');
                            
                             <td>
                                 <a href="edit-category.php?id=<?= $item['id']; ?>" class="btn btn-primary"> Edit</a>
+                                <form>
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
                             </td>
                             </tr>
                             <?php

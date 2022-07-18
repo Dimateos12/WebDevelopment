@@ -16,13 +16,6 @@ function getByID($table, $id){
     return $query_run;
 }
 
-function getByName($table, $name){
-    global $con;
-    $query = "SELECT * FROM $table WHERE name='$name' ";
-    $query_run = mysqli_query($con,$query);
-    return $query_run;
-}
-
 
 function redirect($url, $message){
     $_SESSION['message'] = $message;
