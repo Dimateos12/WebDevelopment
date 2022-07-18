@@ -137,5 +137,8 @@
         }
     }
 
+    else if(isset($_POST['add_product_btn'])){
+        
 
+    }
 ?>

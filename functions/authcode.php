@@ -44,6 +44,7 @@ else if(isset($_POST['login_btn'])){
     $login_query_run = mysqli_query($con, $login_query);
 
     if(mysqli_num_rows($login_query_run) >0){
+        
         $_SESSION['auth'] = true;
 
         $userdate = mysqli_fetch_array($login_query_run);
@@ -57,6 +58,7 @@ else if(isset($_POST['login_btn'])){
             'name' => $username,
             'email' => $email
         ];
+        $_SESSION['name1'] = $userdate['name'];
 
         $_SESSION['role_as'] = $role_as;
 

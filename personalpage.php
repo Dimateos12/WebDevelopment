@@ -1,7 +1,6 @@
 <?php include("includes/header.php");
 ?>
 
-<h1>Hi <?php echo $_SESSION['name'];?>!</h1>
 
 <div class="container d-flex justify-content-around p-5">
         <form action="cart.php">

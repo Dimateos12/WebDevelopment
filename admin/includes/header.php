@@ -33,6 +33,10 @@
     border: 1px solid #b3b3b3 !important;
     padding: 8px 10px;
   }
+  .form-select{
+    border: 1px solid #b3b3b3 !important;
+    padding: 8px 10px;
+  }
 </style>
 
 
