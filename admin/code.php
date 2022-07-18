@@ -122,5 +122,20 @@
 
     }
 
+    else if(isset($_POST['delete_category_btn'])){
+        $category_id = mysqli_real_escape_string($con,$_POST['category_id']);
+        $delete_query = "DELETE FROM categories WHERE id='$category_id'";
+        $delete_query_run = mysqli_query($con,$delete_query);
+        
+        if($delete_query){
+            $_SESSION['message'] = "Category deleted";
+            header("Location: category.php");
+        }
+        else{
+            $_SESSION['message'] = "Something went wrong";
+            header("Location: category.php");
+        }
+    }
+
 
 ?>

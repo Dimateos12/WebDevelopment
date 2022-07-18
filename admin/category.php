@@ -37,7 +37,7 @@ include('../config/dbcon.php');
                             Status
                         </th>
                         <th>
-                            Edit
+                            Action
                         </th>
                     </tr>
                 </thead>
@@ -63,8 +63,9 @@ include('../config/dbcon.php');
                            
                             <td>
                                 <a href="edit-category.php?id=<?= $item['id']; ?>" class="btn btn-primary"> Edit</a>
-                                <form>
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <form action="code.php" method="POST">
+                                    <input type="hidden" name="category_id" value="<?= $item['id']; ?>">
+                                <button type="submit" name="delete_category_btn" class="btn btn-danger">Delete</button>
                                 </form>
                             </td>
                             </tr>
