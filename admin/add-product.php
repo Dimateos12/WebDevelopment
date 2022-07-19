@@ -18,7 +18,7 @@ include('../config/dbcon.php');
                         <div class="row">
                             <div class="col-md-12 mb-2">
                                 <label for="">Select Category</label>
-                                <select class="form-select">
+                                <select name="category_id" class="form-select">
                                     <option selected>Select Category</option>
                                     <?php
                                     $categories = "categories";
@@ -85,8 +85,8 @@ include('../config/dbcon.php');
                                 </div>
 
                                 <div class="col-md-3">
-                                    <label for="">Popular</label>
-                                    <input type="checkbox" name="popular">
+                                    <label for="">Trending</label>
+                                    <input type="checkbox" name="trending">
                                 </div>
 
 

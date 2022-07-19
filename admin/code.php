@@ -1,15 +1,14 @@
 <?php 
 
     include('../config/dbcon.php');
-    include('../functions/myfunction.php');
-    
+
+
     session_start();
 
-        echo "test";
 
     if(isset($_POST['add_category_btn']))
     {
-        echo "test2";
+
 
         $name = $_POST['name'];
         $slug = $_POST['slug'];
@@ -36,17 +35,7 @@
         (name,slug,description,status,popular,image,meta_tittle,meta_description,meta_keywords)
         VALUES('$name','$slug','$description','$status','$popular','$image','$meta_title','$meta_description','$meta_keywords')";
 
-        // $cat_query_2 = "INSERT INTO categories SET 
-        // name='$name',
-        // slug='$slug',
-        // description='$description',
-        // status='$status',
-        // popular='$popular',
-        // image='$image',
-        // meta_title='$meta_title',
-        // meta_description='$meta_description',
-        // meta_keywords='$meta_keywords'
-        // ";
+
 
 
 
@@ -54,6 +43,8 @@
 
         if($cat_query_run == true){
 
+
+            move_uploaded_file($_FILES['image']["tmp_name"], $path.'/'.$filename);
             $_SESSION["message"] = "Sucessfuly add";
             header("Location: add-category.php");
         }
@@ -100,7 +91,7 @@
             $update_query_run = mysqli_query($con,$update_query);
 
             if($update_query_run){
-               
+
                 if($_FILES['image']['name'] != "")
                 {
                     move_uploaded_file($_FILES['image']['tmp_name'], $path.'/'.$new_image);
@@ -126,7 +117,6 @@
         $category_id = mysqli_real_escape_string($con,$_POST['category_id']);
         $delete_query = "DELETE FROM categories WHERE id='$category_id'";
         $delete_query_run = mysqli_query($con,$delete_query);
-        
         if($delete_query){
             $_SESSION['message'] = "Category deleted";
             header("Location: category.php");
@@ -137,8 +127,49 @@
         }
     }
 
-    else if(isset($_POST['add_product_btn'])){
-        
+    else if(isset($_POST['add_product_btn']))
+    {
 
+        $category_id = $_POST['category_id'];
+        $name = $_POST['name'];
+        $slug = $_POST['slug'];
+        $small_description = $_POST['small_description'];
+        $description = $_POST['description'];
+        $original_price = $_POST['original_price'];
+        $selling_price = $_POST['selling_price'];
+        $qty = $_POST['qty'];
+        $meta_title = $_POST['meta_title'];
+        $meta_description = $_POST['meta_description'];
+        $meta_keywords = $_POST['meta_keywords'];
+        $status = isset($_POST['status']) ? '1':'0';
+        $trending = isset($_POST['trending']) ? '1':'0';
+
+
+        $image = $_FILES['image']['name'];
+        $path ="uploads";
+
+        $image_ext = pathinfo($image, PATHINFO_EXTENSION);
+        $filename = time().'.'.$image_ext;
+
+        $product_query = "INSERT INTO products (category_id,name,slug,small_description,description,original_price,selling_price,
+        qty,meta_title,meta_description,meta_keywords,status,trending,image) VALUES 
+        ('$category_id','$name','$slug','$small_description','$description','$original_price','$selling_price','$qty','$meta_title',
+        '$meta_description','$meta_keywords','$status','$trending','$filename')";
+
+        $product_query_run = mysqli_query($con,$product_query);
+
+        if($product_query_run){
+
+            move_uploaded_file($_FILES['image']["tmp_name"], $path.'/'.$filename);
+            $_SESSION["message"] = "Sucessfuly add";
+            header("Location: add-product.php");
+        }
+        else{
+
+            echo " BlAD  categoria: '$category_id', name: '$name','slug : $slug', smalldescription: '$small_description',description: '$description', 
+            original_price: '$original_price', selling_price: '$selling_price','qty: $qty',meta title: '$meta_title', metadescription '$meta_description'
+            ,meta keywords: '$meta_keywords',status: '$status', trending: '$trending' obrazek: '$image' ";
+            // $_SESSION["message"] = "Something Wrong to  add product ";
+            // header("Location: add-product.php");
+        }
     }
-?>
