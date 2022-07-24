@@ -59,7 +59,7 @@ else if(isset($_POST['login_btn'])){
             'email' => $email
         ];
         $_SESSION['name1'] = $userdate['name'];
-
+        $_SESSION['id'] = $userdate['id'];
         $_SESSION['role_as'] = $role_as;
 
         if($role_as == 1){
