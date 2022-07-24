@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Lug 24, 2022 alle 16:44
+-- Creato il: Lug 24, 2022 alle 16:34
 -- Versione del server: 10.4.24-MariaDB
 -- Versione PHP: 8.1.6
 
@@ -22,8 +22,6 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
-
-DROP 'web_development';
 
 --
 -- Struttura della tabella `categories`
