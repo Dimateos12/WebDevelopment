@@ -650,7 +650,7 @@
             if (isset($_SESSION['auth'])) {
             ?>
               <div class="user_option-box">
-                <a href="personalpage.phpl">
+                <a href="personalpage.php">
                   <i class="fa fa-user" href="" aria-hidden="true"></i>
                 </a>
                 <a href="">
@@ -672,7 +672,7 @@
               else {
             ?>
            <div class="user_option-box">
-                <a href="personalpage.phpl">
+                <a href="personalpage.php">
                   <i class="fa fa-user" href="" aria-hidden="true"></i>
                 </a>
                 <a href="">

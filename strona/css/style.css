@@ -764,7 +764,7 @@ a:focus {
 
 .footer_section {
   background-color: #3b4a6b;
-  color: #ffffff;
+  color: #cccccc;
   padding-top: 60px;
 }
 
@@ -913,6 +913,5 @@ a:focus {
 .footer_section .footer-info p a {
   color: inherit;
 }
-
 
 /*# sourceMappingURL=style.css.map */
