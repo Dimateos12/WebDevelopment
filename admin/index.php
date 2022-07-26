@@ -1,6 +1,7 @@
 <?php
 include("includes/header.php");
-include('../middleware/adminMiddleware.php')
+include('../middleware/adminMiddleware.php');
+include('../config/dbcon.php')
 
 ?>
 
@@ -113,4 +114,62 @@ include('../middleware/adminMiddleware.php')
 
 </div>
 
+
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+setInterval(function()
+{ 
+ $.ajax
+ ({
+ type:'post',
+ url:'',
+ data:{
+  get_online_visitor:"online_visitor",
+ },
+ success:function(response) {
+ if(response!="")
+ {
+  $("#online_visior_val").html(response);
+ }
+ }
+ });
+}, 10000)
+});
+</script>
+</head>
+<body>
+<div id="wrapper">
+
+<?php
+
+// To Get Total Online Visitors
+$total_online_visitors=total_online();
+
+// To Get Total Visitors
+$total_visitors = mysqli_query($con, "SELECT * FROM total_visitors");
+$total_visitors = mysqli_num_rows($total_visitors);
+
+// To Insert Page View And Select Total Pageview
+$user_ip=$_SERVER['REMOTE_ADDR'];
+$page=$_SERVER['PHP_SELF'];
+mysqli_query($con, "INSERT INTO pageviews values('','$page','$user_ip')");
+$pageviews = mysqli_query($con,"SELECT * FROM pageviews");
+$total_pageviews = mysqli_num_rows($pageviews);
+
+//To Get Total Articles
+$articles = mysqli_query($con,"SELECT * FROM articles");
+
+$total_articles = mysqli_num_rows($articles);
+
+?>
+
+<div id="stat_div">
+<li><p>Total Visitors</p><br><span><?php echo $total_visitors;?></span></li>
+<li><p>Visitors Online</p><br><span id="online_visior_val"><?php echo $total_online_visitors;?></span></li>
+<li><p>Total Pageviews</p><br><span><?php echo $total_pageviews;?></span></li>
+<li><p>Total Articles</p><br><span><?php echo $total_articles;?></span></li>
+</div>
+
+</div>
 <?php include("includes/footer.php"); ?>
