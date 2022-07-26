@@ -32,7 +32,8 @@ include("config/dbcon.php");
             <a href ="products.php?category=<?= $item['slug']; ?>">
                 <div class="card shadow">
                     <div class="card-body">
-                        <img src="uploads/<?= $item['image']; ?>"  alt="<?= $item['image']; ?>" class="w-100">
+                        <img src="admin/uploads/<?= $item['image']; ?>" width="50" height="500" alt="<?= $item['image']; ?>" class="w-100">
+                        <!-- /opt/lampp/htdocs/WebDevelopment/admin/uploads/1658849951.png -->
                         <h4><?= $item['name']; ?></h4>    
                     </div>
                 </div>
