@@ -1,6 +1,7 @@
 <?php include("includes/header.php");
 ?>
 
+<h1>Hi <?php echo $_SESSION['name1'] ?>!</h1>
 
 <div class="container d-flex justify-content-around p-5">
         <form action="cart.php">
@@ -13,7 +14,7 @@
                 Your purchase
             </button>
         </form>
-        <form action="personaledit.php">
+        <form action="../personaledit.php">
             <button type="submit" class="btn btn-primary btn-lg">
                 Your personal data
             </button>
