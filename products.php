@@ -1,5 +1,6 @@
 <?php include("includes/header.php");
 include("config/dbcon.php");
+
 $category_slug = $_GET['category'];
 
 $category_data = "SELECT * FROM categories WHERE slug='$category_slug' AND status='0' LIMIT 1";
@@ -29,7 +30,7 @@ $cid = $category['id'];
     <div class="row">
     <?php
 
-    $query = "SELECT * FROM products WHERE category_id= $cid  STATUS='0' ";
+    $query = "SELECT * FROM products WHERE category_id= $cid AND STATUS='0' ";
     $query_run = mysqli_query($con, $query);
 
     if (mysqli_num_rows($query_run) > 0) {
@@ -38,7 +39,7 @@ $cid = $category['id'];
     ?>
 
         <div class="col-md-3 mb-2">
-            <a href ="#">
+            <a href ="index_product.php?product=<?= $item['slug']; ?>">
                 <div class="card shadow">
                     <div class="card-body">
                         <img src="uploads/<?= $item['image']; ?>"  alt="<?= $item['image']; ?>" class="w-100">
@@ -51,6 +52,7 @@ $cid = $category['id'];
         }
     } else {
         echo "data dont find";
+        echo $cid;
     }
 
 
