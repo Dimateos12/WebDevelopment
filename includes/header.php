@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -498,11 +498,11 @@
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
 
-  <link rel='canonical' href='http://localhost/WebDevelopment/strona/index.html' />
+  <link rel='canonical' href='http://localhost/WebDevelopment/index.php' />
   <script type="text/javascript">
     var ezouid = "1";
   </script>
-  <base href="http://localhost/WebDevelopment/strona/index.html">
+  <base href="http://localhost/WebDevelopment/index.php">
   <script type='text/javascript'>
     var ezoTemplate = 'old_site_noads';
     if (typeof ezouid == 'undefined') {
@@ -633,10 +633,10 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
               <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="watches.html"> Watches </a>
+                <a class="nav-link" href="category.php"> Watches </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="about.html"> About </a>
