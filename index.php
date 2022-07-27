@@ -1,10 +1,12 @@
-<?php include("includes/header.php");?>
+<?php include("includes/header.php");
+      include("section.php");
+?>
 
-<h1>Hello, world!</h1>
+
 
 
 <!-- add exit button -->
-<button class="btn btn-primary">Test</button>
+
 <?php if (isset($_SESSION['message'])) { ?>
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
         <strong>Hey!</strong> <?= $_SESSION['message']; ?>

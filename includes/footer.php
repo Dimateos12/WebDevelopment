@@ -86,38 +86,28 @@
   <!-- footer section -->
 
   <!-- jQery -->
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    
+  <!-- custom js -->
+    <script src="assets/js/custom.js"></script>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
   <script src="js/jquery-3.4.1.min.js"></script>
   <!-- popper js -->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
     integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
     </script>
-  <!-- bootstrap js -->
-  <script src="js/bootstrap.js"></script>
+
   <!-- owl slider -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
   </script>
-  <!-- custom js -->
-  <script src="assets/js/custom.js"></script>
+
   <!-- Google Map -->
   <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&amp;callback=myMap"></script>
   <!-- End Google Map -->
 
 
-  <include id="includedContent"></include>
-  <script>
-    $(function () {
-      $("#includedContent").load("../htmlads.html");
-    });
-  </script>
 
-
-
-  <script type='text/javascript' style='display:none;' async>
-  </script>
-
-  <script type="text/javascript" data-cfasync="false"></script>
 </body>
 
 </html>
