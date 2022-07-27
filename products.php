@@ -7,28 +7,21 @@ $category_data = "SELECT * FROM categories WHERE slug='$category_slug' AND statu
 $query_run = mysqli_query($con, $category_data);
 $category = mysqli_fetch_array($query_run);
 $cid = $category['id'];
-
-
-
 ?>
 
-
-<section class="section " id="products">
-    <div class="page-heading" id="top">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 d-flex justify-content-center ">
-                    <div class="inner-content">
-                        <h2>Products</h2>
-                        <span></span>
-                    </div>
+<header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder"><?= $category["name"];?></h1>
+                    <p class="lead fw-normal text-white-50 mb-0">Discover our products</p>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="conteiner">
-    <div class="row">
-    <?php
+
+</header>
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+<?php
 
     $query = "SELECT * FROM products WHERE category_id= $cid AND STATUS='0' ";
     $query_run = mysqli_query($con, $query);
@@ -37,29 +30,32 @@ $cid = $category['id'];
 
         foreach ($query_run as $item) {
     ?>
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" src="admin/uploads/<?= $item['image']; ?>"  width="100" height="400" alt="<?= $item['image']; ?>" />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder"><?= $item['name']; ?></h5>
+                                    <!-- Product price-->
+                                    <?= $item['description']; ?>
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="index_product.php?product=<?= $item['slug']; ?>">Check product</a></div>
+                            </div>
+                        </div>
+            </div>
 
-        <div class="col-md-3 mb-2">
-            <a href ="index_product.php?product=<?= $item['slug']; ?>">
-                <div class="card shadow">
-                    <div class="card-body">
-                        <img src="admin/uploads/<?= $item['image']; ?>"  alt="<?= $item['image']; ?>" class="w-100">
-                        <h4><?= $item['name']; ?></h4>    
-                    </div>
-                </div>
-            </a>
-        </div>
     <?php
-        }
-    } else {
-        echo "data dont find";
-        echo $cid;
-    }
-
-
-
+                    }
+                } else {
+                    echo "data dont find";
+                }
     ?>
-
+        </div>
     </div>
-    </div>
-</div>
-    <?php include("includes/footer.php"); ?>
+</section>

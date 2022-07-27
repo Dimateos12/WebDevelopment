@@ -18,7 +18,7 @@ if (mysqli_num_rows($query_run) > 0) {
 ?>
         <div class="col-sm-6 col-xl-3 ">
           <div class="box">
-            <a href="">
+            <a href="index_product.php?product=<?= $item['slug']; ?>" >
               <div class="img-box">
                 <img src="admin/uploads/<?= $item['image']; ?>"  alt="<?= $item['image']; ?>" " alt="" />
               </div>
