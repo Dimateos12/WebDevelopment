@@ -1,5 +1,6 @@
 <?php include("includes/header.php");
       include("section.php");
+      include("latestWatches.php");
 ?>
 
 
