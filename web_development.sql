@@ -7,6 +7,11 @@
 -- Versione del server: 10.4.24-MariaDB
 -- Versione PHP: 8.1.6
 
+DROP DATABASE IF EXISTS web_development;
+
+CREATE DATABASE web_development;
+USE web_development;
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -22,8 +27,6 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
-
-DROP 'web_development';
 
 --
 -- Struttura della tabella `categories`
@@ -125,6 +128,20 @@ INSERT INTO `users` (`id`, `name`, `email`, `phone`, `password`, `created_at`, `
 (4, 'burak', 'burak@burak', 1234, 'burak', '2022-07-16 20:53:31', 0);
 
 --
+-- Struttura della tabella `opinions`
+--
+
+CREATE TABLE `opinions` (
+  `id` int(11) NOT NULL,
+  `vote` int(11) NOT NULL,
+  `comment` tinytext DEFAULT '',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `id_user` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Indici per le tabelle scaricate
 --
 
@@ -166,8 +183,15 @@ ALTER TABLE `message`
 --
 -- AUTO_INCREMENT per la tabella `users`
 --
-ALTER TABLE `users`
+ALTER TABLE `opinion`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Indici per le tabelle `opinions`
+--
+ALTER TABLE `opinions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Limiti per le tabelle scaricate
@@ -179,6 +203,14 @@ ALTER TABLE `users`
 ALTER TABLE `message`
   ADD CONSTRAINT `author_id` FOREIGN KEY (`author_id`) REFERENCES `users` (`id`);
 COMMIT;
+
+--
+-- Limiti per la tabella `opinions`
+--
+ALTER TABLE `opinions`
+  ADD CONSTRAINT `id_user` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
+COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
