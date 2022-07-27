@@ -6,20 +6,30 @@
         </h2>
       </div>
       <div class="row">
-        <div class="col-md-6 ">
+      <?php
+   include("config/dbcon.php");
+    $query = "SELECT * FROM products ";
+    $query_run = mysqli_query($con, $query);
+
+if (mysqli_num_rows($query_run) > 0) {
+    $counter = 0;
+
+    foreach ($query_run as $item) {
+?>
+        <div class="col-sm-6 col-xl-3 ">
           <div class="box">
-            <a href="">
+            <a href="index_product.php?product=<?= $item['slug']; ?>" >
               <div class="img-box">
-                <img src="images/w1.png" alt="" />
+                <img src="admin/uploads/<?= $item['image']; ?>"  alt="<?= $item['image']; ?>" " alt="" />
               </div>
               <div class="detail-box">
                 <h6>
-                  Smartwatch
+                <?= $item['name']; ?>
                 </h6>
                 <h6>
                   Price:
                   <span>
-                    $300
+                  <?= $item['selling_price']; ?>
                   </span>
                 </h6>
               </div>
@@ -31,159 +41,18 @@
             </a>
           </div>
         </div>
-        <div class="col-sm-6 col-xl-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/w2.png" alt="" />
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Smartwatch
-                </h6>
-                <h6>
-                  Price:
-                  <span>
-                    $125
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-xl-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/w3.png" alt="" />
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Smartwatch
-                </h6>
-                <h6>
-                  Price:
-                  <span>
-                    $110
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-xl-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/w4.png" alt="" />
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Smartwatch
-                </h6>
-                <h6>
-                  Price:
-                  <span>
-                    $145
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-xl-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/w5.png" alt="" />
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Smartwatch
-                </h6>
-                <h6>
-                  Price:
-                  <span>
-                    $195
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6  col-xl-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/w6.png" alt="" />
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Smartwatch
-                </h6>
-                <h6>
-                  Price:
-                  <span>
-                    $170
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-xl-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/w1.png" alt="" />
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Smartwatch
-                </h6>
-                <h6>
-                  Price:
-                  <span>
-                    $230
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
+        <?php
+        $counter++;
+        if($counter>4){ break;}
+        }
+    } else {
+        echo "data dont find";
+        echo $cid;
+    }
+
+    ?>
       <div class="btn-box">
-        <a href="">
+        <a href="category.php">
           View All
         </a>
       </div>
