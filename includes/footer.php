@@ -86,13 +86,15 @@
   <!-- footer section -->
 
   <!-- jQery -->
-    
-  <!-- custom js -->
-    <script src="assets/js/custom.js"></script>
 
+    <script src="./assets/js/jquery-3.6.0.min.js"></script>
+  
+    <!-- custom js -->
+    
+    <script src="./assets/js/custom.js"></script>
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-  <script src="js/jquery-3.4.1.min.js"></script>
-  <!-- popper js -->
+  
+    <!-- popper js -->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
     integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
     </script>

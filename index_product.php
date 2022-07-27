@@ -17,7 +17,7 @@ if ($product) {
 ?>
 
 
-<section class="py-5 product-data">
+<section class="py-5">
     <div class="container px-4 px-lg-5 my-5 ">
         <div class="row gx-4 gx-lg-5 align-items-center">
             <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="admin/uploads/<?= $product['image'] ?>" alt="<?= $product['image'] ?>" /></div>
@@ -29,10 +29,10 @@ if ($product) {
                 </div>
                 <p class="lead"><?= $product['description'] ?></p>
 
-                <div class="d-flex">
+                <div class="d-flex product-data">
                          
                         <button class="input-group-text decrement-btn">-</button>
-                            <input type="text" class="form-control text-center input-qty bg-white"  value="1">
+                            <input type="text" class="form-control text-center input-qty bg-white"  value="1" disabled>
                         <button class="input-group-text increment-btn" >+</button>
                     
                     <button class="btn btn-outline-dark flex-shrink-0 add" type="button">

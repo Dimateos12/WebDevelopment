@@ -660,7 +660,7 @@
                 <a href="">
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </a>
-                <a href="../logout.php">
+                <a href="logout.php">
                   <i class="fa fa-sign-out" aria-hidden="true"></i>
 
                 </a>
@@ -682,7 +682,7 @@
                 <a href="">
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </a>
-                <a href="../login.php">
+                <a href="login.php">
                   <i class="fa fa-sign-out" aria-hidden="true"></i>
 
                 </a>
