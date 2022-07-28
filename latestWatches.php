@@ -43,7 +43,7 @@ if (mysqli_num_rows($query_run) > 0) {
         </div>
         <?php
         $counter++;
-        if($counter>4){ break;}
+        if($counter>3){ break;}
         }
     } else {
         echo "data dont find";

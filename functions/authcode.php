@@ -17,7 +17,7 @@ if(isset($_POST['register_btn'])){
         $insert_query = "INSERT INTO users (name,email,phone,password) VALUES('$name','$email','$phone','$password')";
         $insert_query_run = mysqli_query($con,$insert_query);
 
-        if(!    $insert_query_runns){
+        if(!$insert_query_runns){
             $_SESSION["message"] = "Registered Succesfully";
             header("Location: ../login.php");
         }
@@ -51,9 +51,18 @@ else if(isset($_POST['login_btn'])){
         $username = $userdate['name'];
         $email = $userdate['email'];
         $role_as = $userdate['role_as'];
-
-
-
+        $id = $userdate['id'];
+        
+        $login_data = "SELECT * FROM users_data WHERE  	id_user='$id' ";
+        $login_data_run = mysqli_query($con, $login_data);
+        if(mysqli_num_rows($login_data_run) == 0){
+            
+            $insert_query = "INSERT INTO user_data (id_user) VALUES('$id')";
+            $insert_query_run = mysqli_query($con,$insert_query);
+    
+    
+        }
+       
         $_SESSION['auth_user'] = [
             'name' => $username,
             'email' => $email
