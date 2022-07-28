@@ -639,7 +639,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
               <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="category.php"> Watches </a>
@@ -656,16 +656,26 @@
             if (isset($_SESSION['auth'])) {
             ?>
               <div class="user_option-box">
-                <a href="personalpage.php">
+                <?php
+                
+                if($_SESSION['id'] == 1){
+                ?>
+                <a href="./admin/index.php">
                   <i class="fa fa-user" href="" aria-hidden="true"></i>
                 </a>
+                  <?php } else{
+                     ?>
+                     <a href="personalpage.php">
+                  <i class="fa fa-user" href="" aria-hidden="true"></i>
+                </a>
+                <?php
+                  } 
+                ?>
                 <a href="shopcart.php">
 
                   <i class="fa fa-cart-plus" aria-hidden="true"></i>
                 </a>
-                <a href="">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                </a>
+                
                 <a href="logout.php">
                   <i class="fa fa-sign-out" aria-hidden="true"></i>
 
@@ -678,16 +688,12 @@
               else {
             ?>
            <div class="user_option-box">
-                <a href="personalpage.php">
-                  <i class="fa fa-user" href="" aria-hidden="true"></i>
-                </a>
+            
                 <a href="">
 
                   <i class="fa fa-cart-plus" aria-hidden="true"></i>
                 </a>
-                <a href="">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                </a>
+                
                 <a href="login.php">
                   <i class="fa fa-sign-out" aria-hidden="true"></i>
 

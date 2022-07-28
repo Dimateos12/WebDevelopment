@@ -39,16 +39,16 @@ $cid = $category['id'];
         foreach ($query_run as $item) {
     ?>
                     <div class="col mb-5">
-                        <div class="card h-100 bg-image hover-zoom">
+                        <div class="card h-200 bg-image hover-zoom">
                             <!-- Product image-->
-                            <img class="card-img-top" src="admin/uploads/<?= $item['image']; ?>"  width="100" height="400" alt="<?= $item['image']; ?>" />
+                            <img class="card-img-top w-100" src="admin/uploads/<?= $item['image']; ?>"   alt="<?= $item['image']; ?>" />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
                                     <h5 class="fw-bolder"><?= $item['name']; ?></h5>
                                     <!-- Product price-->
-                                    <?= $item['description']; ?>
+                                    <?= $item['small_description']; ?>
                                 </div>
                             </div>
                             <!-- Product actions-->

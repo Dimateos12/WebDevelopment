@@ -199,7 +199,7 @@ background-color: #4285f4;
 
                 <div class="d-flex justify-content-between p-2 mb-2" style="background-color: #e1f5fe;">
                   <h5 class="fw-bold mb-0">Total:</h5>
-                  <h5 class="fw-bold mb-0"><?= $tot ?> $</h5>
+                  <h5 class="fw-bold mb-0"><?= $tot?> $</h5>
                 </div>
 
               </div>

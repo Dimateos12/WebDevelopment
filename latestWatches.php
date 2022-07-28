@@ -8,7 +8,7 @@
       <div class="row">
       <?php
    include("config/dbcon.php");
-    $query = "SELECT * FROM products ";
+    $query = "SELECT * FROM products ORDER BY id DESC";
     $query_run = mysqli_query($con, $query);
 
 if (mysqli_num_rows($query_run) > 0) {
