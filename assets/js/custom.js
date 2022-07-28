@@ -81,7 +81,32 @@ $(document).ready(function (){
                 "scope" : "update"
             },
             success: function(response){
-                alert(response);
+                
+            }
+        });
+    })
+
+    $(document).on('click','.deleteItem',function(){
+
+        var cart_id = $(this).val();
+
+        $.ajax({
+            method: "POST",
+            url: "functions/handlecart.php",
+            data: {
+                "cart_id" :  cart_id,
+                "scope" : "delete"
+            },
+            success: function(response){
+                
+                if(response == 201){
+                    alertify.success("Product delete successfully");
+                    $('#mycart').load(location.href + " #mycart");
+                } 
+                else{
+                    alertify.success(response);
+                } 
+
             }
         });
     })
