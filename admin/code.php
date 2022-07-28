@@ -132,7 +132,7 @@ else if (isset($_POST['update_category_btn'])) {
 
     $cat_query_1 = "INSERT INTO categories_del
         (name,slug,description,status,popular,image,meta_tittle,meta_description,meta_keywords)
-        VALUES('$name','$slug','$description','$status','$popular','$image','$meta_title','$meta_description','$meta_keywords')";
+        VALUES('$name','$slug','$description','$status','$popular','$filename','$meta_title','$meta_description','$meta_keywords')";
 
     $cat_query_run = mysqli_query($con, $cat_query_1);
 
@@ -263,5 +263,21 @@ else if (isset($_POST['update_category_btn'])) {
         echo " BlAD  categoria: '$category_id', name: '$name','slug : $slug', smalldescription: '$small_description',description: '$description', 
         original_price: '$original_price', selling_price: '$selling_price','qty: $qty',meta title: '$meta_title', metadescription '$meta_description'
         ,meta keywords: '$meta_keywords',status: '$status', trending: '$trending' obrazek: '$image' ";
+    }
+}
+else if (isset($_POST['delete_product_btn'])){
+
+
+
+    $product_id = mysqli_real_escape_string($con, $_POST['product_id']);
+    $delete_query = "DELETE FROM products WHERE id='$product_id'";
+    $delete_query_run = mysqli_query($con, $delete_query);
+    
+    if ($delete_query_run) {
+        $_SESSION['message'] = "Products deleted";
+        header("Location: products.php");
+    } else {
+        $_SESSION['message'] = "Something went wrong";
+        header("Location: products.php");
     }
 }
