@@ -55,16 +55,10 @@ else if(isset($_POST['login_btn'])){
         $role_as = $userdate['role_as'];
         $id = $userdate['id'];
         
-<<<<<<< HEAD
-        $login_data = "SELECT * FROM user_data WHERE  	id_user='$id' ";
-        $login_data_run = mysqli_query($con, $login_data);
-        
-
-=======
         $login_data = "SELECT * FROM user_data WHERE id_user='$id' ";
         $login_data_run = mysqli_query($con, $login_data);
         
->>>>>>> b493060432e08e03867b2dcda81df8302231caea
+
         if(mysqli_num_rows($login_data_run) == 0){
             
             $insert_query = "INSERT INTO user_data (id_user) VALUES('$id')";
