@@ -37,6 +37,35 @@
 
                 break;
 
+                case "update":
+                    $prod_id = $_POST['prod_id'];
+                    $prod_qty = $_POST['prod_qty'];
+
+                    $user_id = $_SESSION['id'];
+
+                    $chk_existing_cart_run = $con->query("SELECT * FROM carts WHERE prod_id = $prod_id AND user_id = $user_id");
+
+                    if(mysqli_num_rows($chk_existing_cart_run) > 0){
+
+                        $update_query = "UPDATE carts SET prod_qty = $prod_qty WHERE prod_id = $prod_id AND user_id = $user_id";
+                        $update_query_run = mysqli_query($con, $update_query);
+
+                        if($update_query_run){
+                            echo 200;
+                        }
+                        else{
+                            echo 500;
+                        }
+
+                    }
+                    else{
+
+                        echo "something went wrong";
+                    
+                    }
+
+                break;
+
                 default :
                     echo 500;
             }
