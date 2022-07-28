@@ -19,9 +19,9 @@ if ($product) {
 <section class="py-5">
     <div class="container product_data px-4 px-lg-5 my-5">
         <div class="row gx-4 gx-lg-5 align-items-center">
-            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="admin/uploads/<?= $product['image'] ?>" alt="<?= $product['image'] ?>" /></div>
+            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0"  src="admin/uploads/<?= $product['image'] ?>" alt="<?= $product['image'] ?>" /></div>
             <div class="col-md-6">
-                <div class="small mb-1">MODEl: BST-498</div>
+                <div class="small mb-1"></div>
                 <h1 class="display-5 fw-bolder"><?= $product['name'] ?></h1>
                 <div class="fs-5 mb-5">
                     <span><?= $product['selling_price'] ?>$</span>

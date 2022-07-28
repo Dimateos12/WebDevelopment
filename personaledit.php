@@ -20,6 +20,11 @@
     $query_run = $con->query("SELECT * FROM users WHERE id='$id'");
     $userdate = mysqli_fetch_array($query_run);
 
+
+    $query_run_1 = $con->query("SELECT * FROM user_data WHERE id_user='$id'");
+    $userdate_1 = mysqli_fetch_array($query_run_1);
+
+
     $name = $userdate['name'];
     $email = $userdate['email'];
     $phone = $userdate['phone'];
@@ -30,7 +35,7 @@
 <h1><?php echo $_SESSION['name1']?></h1>
 
 <div class="container d-flex justify-content-center p-5">
-    <form action="../functions/editcode.php" method="POST">
+    <form action="functions/editcode.php" method="POST">
 
         <p class="text-center">Edit your data</p>
         
@@ -39,8 +44,42 @@
           <input type="text" id="editName" class="form-control" name="name" value="<?php echo $name ?>">
           <label class="form-label" for="editName">Name</label>
         </div>
+       
 
-         <!-- Email field -->
+        <!-- Surname field -->
+        <div class="form-group mb-4">
+          <input type="text" id="editSurname" class="form-control" name="surname" value="<?=$userdate_1['Surname'];  ?>">
+          <label class="form-label" for="editSurnName">Surname</label>
+        </div>
+       
+       
+
+        <!-- Street field -->
+
+
+        <div class="form-group mb-4">
+          <input type="text" id="editSurname" class="form-control" name="street" value="<?=$userdate_1['street'];  ?>">
+          <label class="form-label" for="editStreet">Street</label>
+        </div>
+
+
+        <!-- Zip field -->
+
+
+        <div class="form-group mb-4">
+          <input type="text" id="editSurname" class="form-control" name="zip" value="<?=$userdate_1['zip'];  ?>">
+          <label class="form-label" for="editZip">Zip</label>
+        </div>
+
+        <!-- Country field -->
+
+
+        <div class="form-group mb-4">
+          <input type="text" id="editCountry" class="form-control" name="country" value="<?=$userdate_1['country'];  ?>">
+          <label class="form-label" for="editCountry">Country</label>
+        </div>
+
+        <!-- Email field -->
          <div class="form-group mb-4">
           <input type="text" id="editEmil" class="form-control" name="email" value=<?php echo $email ?>>
           <label class="form-label" for="editEmil">Email</label>
@@ -62,6 +101,7 @@
             <button type="submit" name="edit_btn" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Edit</button>
         </div>
 
+        
     </form>
 
 </div>

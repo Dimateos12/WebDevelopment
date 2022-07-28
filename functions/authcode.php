@@ -55,11 +55,7 @@ else if(isset($_POST['login_btn'])){
         $role_as = $userdate['role_as'];
         $id = $userdate['id'];
         
-<<<<<<< HEAD
         $login_data = "SELECT * FROM user_data WHERE id_user='$id' ";
-=======
-        $login_data = "SELECT * FROM user_data WHERE  	id_user='$id' ";
->>>>>>> 3bf31c36e06d518f0699b7b121a5e783f60f3a3b
         $login_data_run = mysqli_query($con, $login_data);
         
 
