@@ -21,7 +21,7 @@
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <div class="img-box">
+                  <div class="img-box bg-image hover-zoom">
                   <img src="admin/uploads/slider-img.png" alt="">
                   </div>
                 </div>

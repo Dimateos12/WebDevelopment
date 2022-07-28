@@ -64,9 +64,9 @@ include('../config/dbcon.php');
                             </td>
                             <td><?= $item['status'] == '0' ? "Visible": "Hidden"; ?></td>
                            
-                            <td>
-                                <a href="edit-product.php?id=<?= $item['id']; ?>" class="btn btn-primary"> Edit</a>
-                            </td>
+                           <td>
+                            <a href="edit-product.php?id=<?= $item['id']; ?>" name="edit_product_btn" class="btn btn-sm btn-primary">Edit</a>
+                           </td>
                             <td>
                             <form action="code.php" method="POST">
                             <input type="hidden" name="product_id" value="<?= $item['id']; ?>">
