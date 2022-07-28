@@ -26,6 +26,7 @@ include('../config/dbcon.php');
                     <div class="card-body">
                         <form action="code.php" method="POST" enctype="multipart/form-data">
                             <div class="row">
+                             
                                 <div class="col-md-6">
                                     <input type="hidden" name="category_id" value="<?= $data['id'] ?>">
                                     <label for="">Name</label>

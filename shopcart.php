@@ -33,14 +33,14 @@ margin: 0;
 position: relative;
 }
 
-.number-input button:before,
+/* .number-input button:before,
 .number-input button:after {
 display: inline-block;
 position: absolute;
 content: '';
 height: 2px;
 transform: translate(-50%, -50%);
-}
+} */
 
 .number-input button.plus:after {
 transform: translate(-50%, -50%) rotate(90deg);
@@ -147,10 +147,11 @@ background-color: #4285f4;
                 $user_id = $_SESSION['id'];
                 $query = "SELECT c.id as cid, c.prod_id, c.prod_qty, p.id as pid, p.name, p.image, p.selling_price FROM carts c, products p WHERE c.prod_id=p.id AND c.user_id=$user_id ORDER BY c.id DESC";
                 $query_run = mysqli_query($con, $query);
-
+                $price = 0; 
                 if (mysqli_num_rows($query_run) > 0) {
 
                     foreach ($query_run as $item) {
+                   
                 ?>
                 <div class="container product_data px-4 px-lg-5 my-5">
                   <div class="d-flex align-items-center mb-5">
@@ -165,10 +166,10 @@ background-color: #4285f4;
                         <p class="fw-bold mb-0 me-5 pe-3"><?= $item['selling_price'] ?>$</p>
                         <div class="def-number-input number-input safari_only">
 
-                          <div class="d-flex">
+                          <div class="d-flex ">
                             <button class="input-group-text decrement-btn">-</button>
                               <input type="text" class="form-control text-center input-qty bg-white"  value="1" disabled>
-                            <button class="input-group-text increment-btn" >+</button>
+                            <button class="input-group-text  increment-btn" >+</button>
                           </div>
 
                         </div>
@@ -236,7 +237,7 @@ background-color: #4285f4;
                   <button type="button" class="btn btn-primary btn-block btn-lg">Buy now</button>
 
                   <h5 class="fw-bold mb-5" style="position: absolute; bottom: 0;">
-                    <a href="#!"><i class="fas fa-angle-left me-2"></i>Back to shopping</a>
+                    <a href="/index.php"><i class="fas fa-angle-left me-2"></i>Back to shopping</a>
                   </h5>
 
                 </form>
