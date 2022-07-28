@@ -1,21 +1,15 @@
-<?php include("includes/header.php");
-?>
-
-<h1>Hi <?php echo $_SESSION['name1'] ?>!</h1>
-
-<div class="container d-flex justify-content-around p-5">
-        <form action="cart.php">
-            <button type="submit" class="btn btn-primary btn-lg">
-                Your cart
-            </button>
-        </form>
-        
+<section class="vh-100" style="background-color: #35558a;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100 text-center">
+      <div class="col">
+        <!-- Button trigger modal -->
         <button type="button" class="btn btn-light btn-lg" data-mdb-toggle="modal"
           data-mdb-target="#exampleModal">
-          <i class="fas fa-info me-2"></i> Get orders history
+          <i class="fas fa-info me-2"></i> Get information
         </button>
 
-         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
           aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -59,20 +53,7 @@
           </div>
         </div>
 
-        <form action="../personaledit.php">
-            <button type="submit" class="btn btn-primary btn-lg">
-                Your personal data
-            </button>
-        </form>
-</div>
-
-<!-- add exit button -->
-<button class="btn btn-primary">Test</button>
-<?php if (isset($_SESSION['message'])) { ?>
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>Hey!</strong> <?= $_SESSION['message']; ?>
+      </div>
     </div>
-    <?php
-    unset($_SESSION['message']);
-} ?>
-<?php include("includes/footer.php"); ?>
+  </div>
+</section>

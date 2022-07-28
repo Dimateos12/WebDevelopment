@@ -53,14 +53,14 @@ else if(isset($_POST['login_btn'])){
         $role_as = $userdate['role_as'];
         $id = $userdate['id'];
         
-        $login_data = "SELECT * FROM users_data WHERE  	id_user='$id' ";
+        $login_data = "SELECT * FROM user_data WHERE id_user='$id' ";
         $login_data_run = mysqli_query($con, $login_data);
+        
         if(mysqli_num_rows($login_data_run) == 0){
             
             $insert_query = "INSERT INTO user_data (id_user) VALUES('$id')";
             $insert_query_run = mysqli_query($con,$insert_query);
-    
-    
+       
         }
        
         $_SESSION['auth_user'] = [
