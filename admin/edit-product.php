@@ -15,23 +15,20 @@ include('../config/dbcon.php');
 
                 <div class="card-body">
                     <form action="code.php" method="POST" enctype="multipart/form-data">
-                        
+
                     <?php 
-                    
+
                     $id = $_GET['id'];
                     $query = "SELECT * FROM products WHERE id='$id' ";
                     $query_run = mysqli_query($con,$query);
-                   
+
                     if(mysqli_num_rows($query_run)> 0 ) {
                         $data = mysqli_fetch_array($query_run);
                 ?>
-                   
-                    
-                    
                     <div class="row">
                             <div class="col-md-12 mb-2">
                                 <label for="">Select Category</label>
-                                <select name="category_id" class="form-select">
+                                <select name="category_id" value class="form-select">
                                     <option selected>Select Category</option>
                                     <?php
                                     $categories = "categories";
@@ -60,12 +57,14 @@ include('../config/dbcon.php');
 
                             <div class="col-md-12">
                                 <label for="">Small description</label>
-                                <textarea row="3" name="small_description"value="<?= $data['small_description']?>"  placeholder="Enter small description" class="form-control mb-2"></textarea>
+                                <input type="text" name="small_description" value="<?= $data['small_description'] ?>" placeholder="Enter small description " class="form-control mb-2">
+                            </div>
                             </div>
 
                             <div class="col-md-12">
                                 <label for="">Description</label>
-                                <textarea row="3" name="description" value="<?= $data['description']?>"  placeholder="Enter description" class="form-control mb-2"></textarea>
+                                <input type="text" name="description" value="<?= $data['description'] ?>" placeholder="Enter description " class="form-control mb-2">
+
                             </div>
 
                             <div class="col-md-6">
@@ -82,6 +81,9 @@ include('../config/dbcon.php');
                             <div class="col-md-12">
                                 <label for="">Upload Image</label>
                                 <input type="file" name="image" calss="form-control mb-2 ">
+                                <label for="">Current Image</label>
+                                <input type="hidden" name="old_image" value="<?= $data['image'] ?>">
+                                <img src="uploads/<?= $data['image'] ?>" height="70px" width="50px" alt="">
                             </div>
 
                             <div class="row">
@@ -106,8 +108,6 @@ include('../config/dbcon.php');
                             </div>
 
 
-
-
                             <div class="col-md-12">
                                 <label for="">Meta Title</label>
                                 <input type="text" name="meta_title" placeholder="Enter meta title" value="<?= $data['meta_title']?>" class="form-control">
@@ -115,12 +115,12 @@ include('../config/dbcon.php');
 
                             <div class="col-md-12">
                                 <label for="">Meta Description</label>
-                                <textarea row="3" name="meta_description" placeholder="Enter meta description"  value="<?= $data['meta_description']?>"class="form-control"></textarea>
+                                <input type="text" name="meta_description" placeholder="Enter meta description" value="<?= $data['meta_description']?>" class="form-control">
                             </div>
 
                             <div class="col-md-12">
                                 <label for="">Meta Keywords</label>
-                                <textarea row="3" name="meta_keywords" placeholder="Enter meta keywords"  value="<?= $data['meta_keywords']?> "class="form-control"></textarea>
+                                <input type="text" name="meta_keywords" placeholder="Enter meta keywords" value="<?= $data['meta_keywords']?>" class="form-control">
                             </div>
 
                             <div class="col-md12">
