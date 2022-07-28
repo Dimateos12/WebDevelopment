@@ -127,6 +127,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `phone`, `password`, `created_at`, `
 (3, 'mateusz', 'manager@si.com', 123, '123', '2022-07-16 17:50:22', 0),
 (4, 'burak', 'burak@burak', 1234, 'burak', '2022-07-16 20:53:31', 0);
 
+-- --------------------------------------------------------
 --
 -- Struttura della tabella `opinions`
 --
@@ -137,6 +138,19 @@ CREATE TABLE `opinions` (
   `comment` tinytext DEFAULT '',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `id_user` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+--
+-- Struttura della tabella `carts`
+--
+
+CREATE TABLE `carts` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `prod_id` int(11) NOT NULL,
+  `prod_qty` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -171,6 +185,21 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indici per le tabelle `message`
+--
+ALTER TABLE `carts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `prod_id` (`prod_id`);
+
+--
+-- Indici per le tabelle `opinions`
+--
+ALTER TABLE `opinions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_user` (`id_user`);
+
+--
 -- AUTO_INCREMENT per le tabelle scaricate
 --
 
@@ -181,17 +210,34 @@ ALTER TABLE `message`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `users`
+-- AUTO_INCREMENT per la tabella `message`
 --
-ALTER TABLE `opinion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Indici per le tabelle `opinions`
+-- AUTO_INCREMENT per la tabella `message`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `message`
 --
 ALTER TABLE `opinions`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_user` (`id_user`);
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `message`
+--
+ALTER TABLE `carts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `message`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Limiti per le tabelle scaricate
@@ -209,6 +255,21 @@ COMMIT;
 --
 ALTER TABLE `opinions`
   ADD CONSTRAINT `id_user` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
+COMMIT;
+
+--
+-- Limiti per la tabella `carts`
+--
+ALTER TABLE `carts`
+  ADD CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `prod_id` FOREIGN KEY (`prod_id`) REFERENCES `products` (`id`);
+COMMIT;
+
+--
+-- Limiti per la tabella `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `category_id` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`);
 COMMIT;
 
 

@@ -94,6 +94,22 @@
     <script src="./assets/js/custom.js"></script>
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
   
+    <!-- Alertify JS -->
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+
+    <script>
+
+      alertify.set('notifier','position', 'top-right');
+
+      <?php if(isset($_SESSION['message'])) {  ?>
+        alertify.success('<?= $_SESSION["message"] ?>');
+      <?php } 
+      unset($_SESSION['message']);
+      ?>
+    </script>
+
+
     <!-- popper js -->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
     integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">

@@ -1,4 +1,7 @@
-<?php include("includes/header.php"); ?>
+<?php 
+  include("includes/header.php"); 
+  include("config/dbcon.php");
+?>
 
 
 <style>
@@ -139,74 +142,46 @@ background-color: #4285f4;
 
                 <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">Your products</h3>
 
-                <div class="d-flex align-items-center mb-5">
-                  <div class="flex-shrink-0">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/13.webp"
-                      class="img-fluid" style="width: 150px;" alt="Generic placeholder image">
-                  </div>
-                  <div class="flex-grow-1 ms-3">
-                    <a href="#!" class="float-end text-black"><i class="fas fa-times"></i></a>
-                    <h5 class="text-primary">Samsung Galaxy M11 64GB</h5>
-                    <h6 style="color: #9e9e9e;">Color: white</h6>
-                    <div class="d-flex align-items-center">
-                      <p class="fw-bold mb-0 me-5 pe-3">799$</p>
-                      <div class="def-number-input number-input safari_only">
-                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                          class="minus"></button>
-                        <input class="quantity fw-bold text-black" min="0" name="quantity" value="1"
-                          type="number">
-                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                          class="plus"></button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <?php
 
-                <div class="d-flex align-items-center mb-5">
-                  <div class="flex-shrink-0">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/6.webp"
-                      class="img-fluid" style="width: 150px;" alt="Generic placeholder image">
-                  </div>
-                  <div class="flex-grow-1 ms-3">
-                    <a href="#!" class="float-end text-black"><i class="fas fa-times"></i></a>
-                    <h5 class="text-primary">Headphones Bose 35 II</h5>
-                    <h6 style="color: #9e9e9e;">Color: Red</h6>
-                    <div class="d-flex align-items-center">
-                      <p class="fw-bold mb-0 me-5 pe-3">239$</p>
-                      <div class="def-number-input number-input safari_only">
-                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                          class="minus"></button>
-                        <input class="quantity fw-bold text-black" min="0" name="quantity" value="1"
-                          type="number">
-                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                          class="plus"></button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                $user_id = $_SESSION['id'];
+                $query = "SELECT c.id as cid, c.prod_id, c.prod_qty, p.id as pid, p.name, p.image, p.selling_price FROM carts c, products p WHERE c.prod_id=p.id AND c.user_id=$user_id ORDER BY c.id DESC";
+                $query_run = mysqli_query($con, $query);
 
-                <div class="d-flex align-items-center mb-5">
-                  <div class="flex-shrink-0">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/1.webp"
-                      class="img-fluid" style="width: 150px;" alt="Generic placeholder image">
-                  </div>
-                  <div class="flex-grow-1 ms-3">
-                    <a href="#!" class="float-end text-black"><i class="fas fa-times"></i></a>
-                    <h5 class="text-primary">iPad 9.7 6-gen WiFi 32GB</h5>
-                    <h6 style="color: #9e9e9e;">Color: rose pink</h6>
-                    <div class="d-flex align-items-center">
-                      <p class="fw-bold mb-0 me-5 pe-3">659$</p>
-                      <div class="def-number-input number-input safari_only">
-                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                          class="minus"></button>
-                        <input class="quantity fw-bold text-black" min="0" name="quantity" value="2"
-                          type="number">
-                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                          class="plus"></button>
+                if (mysqli_num_rows($query_run) > 0) {
+
+                    foreach ($query_run as $item) {
+                ?>
+                <div class="container product_data px-4 px-lg-5 my-5">
+                  <div class="d-flex align-items-center mb-5">
+                    <div class="flex-shrink-0">
+                      <img src="admin/uploads/<?= $item['image'] ?>" alt="<?= $item['image'] ?>"
+                        class="img-fluid" style="width: 150px;">
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                      <a href="#!" class="float-end text-black"><i class="fas fa-times"></i></a>
+                      <h5 class="text-primary"><?= $item['name'] ?></h5>
+                      <div class="d-flex align-items-center">
+                        <p class="fw-bold mb-0 me-5 pe-3"><?= $item['selling_price'] ?>$</p>
+                        <div class="def-number-input number-input safari_only">
+
+                          <div class="d-flex">
+                            <button class="input-group-text decrement-btn">-</button>
+                              <input type="text" class="form-control text-center input-qty bg-white"  value="1" disabled>
+                            <button class="input-group-text increment-btn" >+</button>
+                          </div>
+
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
+                <?php
+                      }
+                  } else {
+                      echo "data dont find";
+                  }
+                ?>
 
                 <hr class="mb-4" style="height: 2px; background-color: #1266f1; opacity: 1;">
 

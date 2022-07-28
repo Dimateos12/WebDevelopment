@@ -597,6 +597,11 @@
   <script type="text/javascript" defer>
     __ez.queue.addFile('/detroitchicago/cmbdv2.js', '/detroitchicago/cmbdv2.js?gcb=195-0&cb=03-5y0c-5y18-4&cmbcb=86&sj=x03x0cx18', true, ['/detroitchicago/cmbv2.js'], true, false, true, false);
   </script>
+
+  <!-- Alertify -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+
 </head>
 
 <body>
