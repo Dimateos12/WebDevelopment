@@ -194,7 +194,7 @@ background-color: #4285f4;
 
                   ?>
                 </div>
-                
+
                 <hr class="mb-4" style="height: 2px; background-color: #1266f1; opacity: 1;">
 
                 <div class="d-flex justify-content-between p-2 mb-2" style="background-color: #e1f5fe;">
@@ -207,7 +207,7 @@ background-color: #4285f4;
 
                 <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">Payment</h3>
 
-                <form class="mb-5">
+                <form class="mb-5" action="functions/buycode.php" method="POST">
 
                   <div class="form-outline mb-5">
                     <input type="text" id="typeText" class="form-control form-control-lg" siez="17" value="1234 5678 9012 3457" minlength="19" maxlength="19" />
@@ -236,7 +236,7 @@ background-color: #4285f4;
 
                   <p class="mb-5">Lorem ipsum dolor sit amet consectetur, adipisicing elit <a href="#!">obcaecati sapiente</a>.</p>
 
-                  <button type="button" class="btn btn-primary btn-block btn-lg">Buy now</button>
+                  <button type="submit" class="btn btn-primary btn-block btn-lg">Buy now</button>
 
                   <h5 class="fw-bold mb-5" style="position: absolute; bottom: 0;">
                     <a href="/index.php"><i class="fas fa-angle-left me-2"></i>Back to shopping</a>
