@@ -39,7 +39,7 @@ $cid = $category['id'];
         foreach ($query_run as $item) {
     ?>
                     <div class="col mb-5">
-                        <div class="card h-100">
+                        <div class="card h-100 bg-image hover-zoom">
                             <!-- Product image-->
                             <img class="card-img-top" src="admin/uploads/<?= $item['image']; ?>"  width="100" height="400" alt="<?= $item['image']; ?>" />
                             <!-- Product details-->

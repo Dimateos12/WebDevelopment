@@ -5,7 +5,7 @@ include("config/dbcon.php"); ?>
 
 
 
-<div class="p-5 text-center bg-image rounded-3" style="
+<div class="p-5 text-center bg-image rounded-3 " style="
     background-image: url('admin/uploads/bc.png');
     height: 400px;
   ">
@@ -21,7 +21,7 @@ include("config/dbcon.php"); ?>
 
 
 
-<section class="py-5">
+<section class="py-5  ">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
@@ -36,9 +36,9 @@ include("config/dbcon.php"); ?>
                     foreach ($query_run as $item) {
                 ?>
                 <div class="col mb-5">
-                        <div class="card h-100">
+                        <div class="card h-100 bg-image hover-zoom">
                             <!-- Product image-->
-                            <img class="card-img-top" src="admin/uploads/<?= $item['image']; ?>"  width="300" height="200" alt="<?= $item['image']; ?>" />
+                            <img class="card-img-top  " src="admin/uploads/<?= $item['image']; ?>"  width="300" height="200" alt="<?= $item['image']; ?>" />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
