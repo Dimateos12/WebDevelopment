@@ -39,7 +39,7 @@ include('../config/dbcon.php');
 
                                 <div class="col-md-12">
                                     <label for="">Description</label>
-                                    <textarea row="3" name="description" value="<?= $data['description'] ?>" placeholder="Emter description" class="form-control"></textarea>
+                                    <input name="description" value="<?= $data['description'] ?>" placeholder="Emter description" class="form-control">
                                 </div>
 
                                 <div class="col-md-12">
@@ -52,17 +52,17 @@ include('../config/dbcon.php');
 
                                 <div class="col-md-12">
                                     <label for="">Meta Title</label>
-                                    <input type="text" name="meta_title" value="<?= $data['meta_tittle'] ?>" placeholder="Enter meta title" class="form-control">
+                                    <input  name="meta_title" value="<?= $data['meta_tittle'] ?>" placeholder="Enter meta title" class="form-control">
                                 </div>
 
                                 <div class="col-md-12">
                                     <label for="">Meta Description</label>
-                                    <textarea row="3" name="meta_description"  value="<?= $data['meta_description'] ?>" placeholder="Enter meta description" class="form-control"></textarea>
+                                    <input  name="meta_description" value="<?= $data['meta_description'] ?>" placeholder="Enter meta description" class="form-control">
                                 </div>
 
                                 <div class="col-md-12">
                                     <label for="">Meta Keywords</label>
-                                    <textarea row="3" name="meta_keywords" value="<?= $data['meta_keywords'] ?>" placeholder="Enter meta keywords" class="form-control"></textarea>
+                                    <input  name="meta_keywords" value="<?= $data['meta_keywords'] ?>" placeholder="Enter meta_keywords" class="form-control">
                                 </div>
 
                                 <div class="col-md-6">
