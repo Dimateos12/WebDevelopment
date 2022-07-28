@@ -9,7 +9,7 @@
     $email = mysqli_real_escape_string($con, $_POST['email']);
     $phone = mysqli_real_escape_string($con, $_POST['phone']);
     $password = mysqli_real_escape_string($con, $_POST['password']);
-    $Surname = mysqli_real_escape_string($con, $_POST['Surname']);
+    $Surname = mysqli_real_escape_string($con, $_POST['surname']);
     $street = mysqli_real_escape_string($con, $_POST['street']);
     $zip = mysqli_real_escape_string($con, $_POST['zip']);
     $country = mysqli_real_escape_string($con, $_POST['country']);
