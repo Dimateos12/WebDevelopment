@@ -210,31 +210,29 @@ background-color: #4285f4;
                 <form class="mb-5" action="functions/buycode.php" method="POST">
 
                   <div class="form-outline mb-5">
-                    <input type="text" id="typeText" class="form-control form-control-lg" siez="17" value="1234 5678 9012 3457" minlength="19" maxlength="19" />
+                    <input type="text" id="typeText" name="number" class="form-control form-control-lg" siez="17" value="" minlength="16" maxlength="19" required />
                     <label class="form-label" for="typeText">Card Number</label>
                   </div>
 
                   <div class="form-outline mb-5">
-                    <input type="text" id="typeName" class="form-control form-control-lg" siez="17" value="John Smith" />
+                    <input type="text" id="typeName" name="name" class="form-control form-control-lg" siez="17" value="" required/>
                     <label class="form-label" for="typeName">Name on card</label>
                   </div>
 
                   <div class="row">
                     <div class="col-md-6 mb-5">
                       <div class="form-outline">
-                        <input type="text" id="typeExp" class="form-control form-control-lg" value="01/22" size="7" id="exp" minlength="7" maxlength="7" />
+                        <input type="text" id="typeExp" name="exp" class="form-control form-control-lg" value="" size="7" id="exp" minlength="5" maxlength="7" required/>
                         <label class="form-label" for="typeExp">Expiration</label>
                       </div>
                     </div>
                     <div class="col-md-6 mb-5">
                       <div class="form-outline">
-                        <input type="password" id="typeText" class="form-control form-control-lg" value="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />
+                        <input type="password" id="typeText" name="cvv" class="form-control form-control-lg" value="" size="1" minlength="3" maxlength="3" required/>
                         <label class="form-label" for="typeText">Cvv</label>
                       </div>
                     </div>
                   </div>
-
-                  <p class="mb-5">Lorem ipsum dolor sit amet consectetur, adipisicing elit <a href="#!">obcaecati sapiente</a>.</p>
 
                   <button type="submit" class="btn btn-primary btn-block btn-lg">Buy now</button>
 

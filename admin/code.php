@@ -1,5 +1,5 @@
 <?php
-
+echo "foooo";
 include('../config/dbcon.php');
 
 
@@ -308,4 +308,49 @@ else if (isset($_POST['update_category_btn'])) {
         original_price: '$original_price', selling_price: '$selling_price','qty: $qty',meta title: '$meta_title', metadescription '$meta_description'
         ,meta keywords: '$meta_keywords',status: '$status', trending: '$trending' obrazek: '$image' ";
     }
-}
+}else if (isset($_POST['done_purchase_btn'])) {
+
+    echo="foo";
+    /*$purchase_id = $_POST['purchase_id'];
+
+    $query = "SELECT created_at, id_user, id FROM purchases WHERE id='$purchase_id'";
+    $query_run = mysqli_query($con, $query);
+
+    if (mysqli_num_rows($query_run) > 0) {
+
+        foreach($query_run as $item)
+        {
+            $created_at = $item['created_at'];
+            $id_user = $item['id_user'];
+            $id = $item['id'];
+        }
+
+        $history_query = "INSERT INTO history_purchases (created_at, id_user, purchase_id) VALUES ('$created_at', '$id_user', '$id')";
+        $history_query_run = mysqli_query($con, $history_query);
+
+    } else {
+        echo "nooooo";
+    }
+
+    $query = "SELECT product_id, purchase_id, product_qny FROM products_in_purchases WHERE purchase_id='$purchase_id'";
+    $query_run = mysqli_query($con, $query);
+
+    if (mysqli_num_rows($query_run) > 0) {
+
+        foreach($query_run as $item)
+        {
+            $product_id = $item['product_id'];
+            $purchase_id = $item['purchase_id'];
+            $product_qny = $item['product_qny'];
+        }
+
+        /*$product_history_query = "INSERT INTO history_purchases (created_at, id_user, purchase_id) VALUES ('$product_id', '$purchase_id', '$product_qny')";
+        $product_history_query_run = mysqli_query($con, $product_history_query);
+
+    } else {
+        echo "noonoo";
+    }*/
+
+};
+
+?>

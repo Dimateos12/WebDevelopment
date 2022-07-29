@@ -5,46 +5,64 @@
 
     if(isset($_SESSION['auth'])){
         
+        
         $user_id = $_SESSION['id'];
         
-        $insert_query = "INSERT INTO purchases (id_user) VALUES($user_id)";
-        $insert_query_run = mysqli_query($con,$insert_query);
-
-        $id_query = "SELECT id FROM purchases ORDER BY id DESC LIMIT 1";
-        $id_query_run= mysqli_query($con,$id_query);
+        $number = mysqli_real_escape_string($con, $_POST['number']);
+        $name = mysqli_real_escape_string($con, $_POST['name']);
+        $exp = mysqli_real_escape_string($con, $_POST['exp']);
+        $cvv = mysqli_real_escape_string($con, $_POST['cvv']);
         
-        foreach ($id_query_run as $item) {
-           
-            $id_purchase = $item['id'];
+        $check_query = "SELECT * FROM credit_card WHERE number='$number' AND owner_name='$name' AND expiration='$exp' AND cvv='$cvv' AND user_id='$user_id'";
+        $check_query_run = mysqli_query($con, $check_query);
+
+        if(mysqli_num_rows($check_query_run) >0){
+
+            $insert_query = "INSERT INTO purchases (id_user) VALUES($user_id)";
+            $insert_query_run = mysqli_query($con,$insert_query);
+
+            $id_query = "SELECT id FROM purchases ORDER BY id DESC LIMIT 1";
+            $id_query_run= mysqli_query($con,$id_query);
             
+            foreach ($id_query_run as $item) {
+            
+                $id_purchase = $item['id'];
+                
 
-        }
-        
-        
-        
-        $query = "SELECT c.id as cid, c.prod_id, c.prod_qty, p.id as pid, p.name, p.image, p.selling_price FROM carts c, products p WHERE c.prod_id=p.id AND c.user_id=$user_id ORDER BY c.id DESC";
-        $query_run = mysqli_query($con, $query);
-        if (mysqli_num_rows($query_run) > 0) {
-
-            foreach ($query_run as $item) {
-
-                $insert_query = "INSERT INTO products_in_purchases (product_id, purchase_id, product_qny) VALUES($item[pid],$id_purchase,$item[prod_qty])";
-                $insert_query_run = mysqli_query($con,$insert_query);
-
-                if($insert_query_run){
-                    $_SESSION["message"] = "Buy Succesfully";
-                    header("Location: ../personalpage.php");
-                }
-                else{
-                    $_SESSION['message'] = "Something went wrong";
-                    header("Location: ../personalpage.php");
-                }
-        
             }
-        } else {
-            echo "data dont find";
+            
+            
+            
+            $query = "SELECT c.id as cid, c.prod_id, c.prod_qty, p.id as pid, p.name, p.image, p.selling_price FROM carts c, products p WHERE c.prod_id=p.id AND c.user_id=$user_id ORDER BY c.id DESC";
+            $query_run = mysqli_query($con, $query);
+            if (mysqli_num_rows($query_run) > 0) {
+
+                foreach ($query_run as $item) {
+
+                    $insert_query = "INSERT INTO products_in_purchases (product_id, purchase_id, product_qny) VALUES($item[pid],$id_purchase,$item[prod_qty])";
+                    $insert_query_run = mysqli_query($con,$insert_query);
+
+                    $delete_query = "DELETE FROM carts WHERE id = $item[cid]";
+                    $delete_query_run = mysqli_query($con, $delete_query);
+
+                    if($insert_query_run){
+                        $_SESSION["message"] = "Buy Succesfully";
+                        header("Location: ../personalpage.php");
+                    }
+                    else{
+                        $_SESSION['message'] = "Something went wrong";
+                        header("Location: ../personalpage.php");
+                    }
+            
+                }
+            } else {
+                header("Location: ../shopcart.php");
+            }
         }
-        
+        else{
+            $_SESSION["message"] = "Wrong data in payment's field";
+            header("Location: ../shopcart.php");
+        }
     }
     else{
         echo 401;
