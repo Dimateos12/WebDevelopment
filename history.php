@@ -19,66 +19,118 @@ include('config/dbcon.php');
 </div>
 
 
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+               <h4> Purchases </h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-border">
+                  <thead>
+                      <tr>
+                          <th>
+                              ID
+                          </th>
+                          <th>
+                              Products and Qny
+                          </th>
+                          <th>
+                              Date
+                          </th>
+                          <th>
+                              Status
+                          </th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                  
+                      $user_id = $_SESSION['id'];
+                      $query = "SELECT p.id as pu_id, p.id_user as pu_id_user, p.created_at as pu_created_at FROM purchases p, products_in_purchases m WHERE p.id=m.purchase_id AND p.id_user = $user_id GROUP BY pu_id";
+                      $purchases_query = mysqli_query($con,$query);
+                    
+                      if(mysqli_num_rows($purchases_query) > 0)
+                      {
+                          foreach($purchases_query as $item)
+                          {
+                              ?>
+                              <tr>
+                              <td><?= $item['pu_id']; ?></td>
+                              <td>
+                                  <table class="table table-border">
 
-<table class="table">
-  <thead class="thead-light">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+                                      <?php
+                                          $pur_id = $item['pu_id'];
+                                          $product_query = "SELECT m.product_id as pr_id, m.product_qny as pr_qny FROM purchases p, products_in_purchases m WHERE p.id=m.purchase_id AND p.id=$pur_id";
+                                          $product_query_run = mysqli_query($con,$product_query);
+
+                                          foreach($product_query_run as $product){
+                                      ?>
+                                      <tr>
+                                          <td><?php echo $product['pr_id']; ?></td>
+                                          <td><?php echo $product['pr_qny']; ?></td>
+                                      </tr>
+                                      <?php
+                                          }
+                                      ?>
+                                  </table>
+                              </td>
+                              <td><?= $item['pu_created_at']; ?></td>
+                              <td>In progress</td>
+                              </tr>
+                              <?php
+                          }
+                      }
+                    ?>
+
+                    <?php
+                  
+                      $user_id = $_SESSION['id'];
+                      $query = "SELECT p.purchase_id as pu_id, p.id_user as pu_id_user, p.created_at as pu_created_at FROM history_purchases p, products_in_history m WHERE p.purchase_id=m.purchase_id AND p.id_user = $user_id GROUP BY pu_id";
+                      $purchases_query = mysqli_query($con,$query);
+                    
+                      if(mysqli_num_rows($purchases_query) > 0)
+                      {
+                          foreach($purchases_query as $item)
+                          {
+                              ?>
+                              <tr>
+                              <td><?= $item['pu_id']; ?></td>
+                              <td>
+                                  <table class="table table-border">
+
+                                      <?php
+                                          $pur_id = $item['pu_id'];
+                                          $product_query = "SELECT m.product_id as pr_id, m.product_qny as pr_qny FROM history_purchases p, products_in_history m WHERE p.purchase_id=m.purchase_id AND p.purchase_id=$pur_id";
+                                          $product_query_run = mysqli_query($con,$product_query);
+
+                                          foreach($product_query_run as $product){
+                                      ?>
+                                      <tr>
+                                          <td><?php echo $product['pr_id']; ?></td>
+                                          <td><?php echo $product['pr_qny']; ?></td>
+                                      </tr>
+                                      <?php
+                                          }
+                                      ?>
+                                  </table>
+                              </td>
+                              <td><?= $item['pu_created_at']; ?></td>
+                              <td>Confirm</td>
+                              </tr>
+                              <?php
+                          }
+                      }
+                    ?>
+                  </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+    </div>
+
+</div>
 
 <?php include("includes/footer.php"); ?>

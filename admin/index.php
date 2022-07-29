@@ -1,5 +1,6 @@
 <?php
 include("includes/header.php");
+include("../config/dbcon.php");
 include('../middleware/adminMiddleware.php');
 
 
@@ -41,14 +42,26 @@ include('../middleware/adminMiddleware.php');
                                         <i class="material-icons opacity-10">weekend</i>
                                     </div>
                                     <div class="text-end pt-1">
-                                        <p class="text-sm mb-0 text-capitalize">Bookings</p>
-                                        <h4 class="mb-0">281</h4>
+                                        <p class="text-sm mb-0 text-capitalize">Users</p>
+                                        <?php
+
+
+                                        $result = mysqli_query($con, "SELECT COUNT(*) AS `count` FROM `users`");
+                                        $row = mysqli_fetch_array($result);
+                                        $count = $row['count'];
+
+
+                                        if (mysqli_num_rows($result) > 0) {
+
+                                        ?>
+                                            <h4 class="mb-0"><?= $count ?></h4>
+                                        <?php } ?>
                                     </div>
                                 </div>
 
                                 <hr class="dark horizontal my-0">
                                 <div class="card-footer p-3">
-                                    <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+55% </span>than last week</p>
+                                  
                                 </div>
                             </div>
 
@@ -58,7 +71,7 @@ include('../middleware/adminMiddleware.php');
                                         <i class="material-icons opacity-10">leaderboard</i>
                                     </div>
                                     <div class="text-end pt-1">
-                                        <p class="text-sm mb-0 text-capitalize">Today's Users</p>
+                                        <p class="text-sm mb-0 text-capitalize">Bought</p>
                                         <h4 class="mb-0">2,300</h4>
                                     </div>
                                 </div>
@@ -77,32 +90,31 @@ include('../middleware/adminMiddleware.php');
                                         <i class="material-icons opacity-10">store</i>
                                     </div>
                                     <div class="text-end pt-1">
-                                        <p class="text-sm mb-0 text-capitalize ">Revenue</p>
-                                        <h4 class="mb-0 ">34k</h4>
+                                        <p class="text-sm mb-0 text-capitalize ">Products</p>
+                                        <?php
+
+
+                                            $result = mysqli_query($con, "SELECT COUNT(*) AS `count` FROM `products`");
+                                            $row = mysqli_fetch_array($result);
+                                            $count = $row['count'];
+
+
+                                            if (mysqli_num_rows($result) > 0) {
+
+                                                ?>
+                                        <h4 class="mb-0 "><?= $count ?></h4>
+                                        <?php  } ?>
                                     </div>
                                 </div>
 
                                 <hr class="horizontal my-0 dark">
                                 <div class="card-footer p-3">
-                                    <p class="mb-0 "><span class="text-success text-sm font-weight-bolder">+1% </span>than yesterday</p>
                                 </div>
                             </div>
 
-                            <div class="card ">
-                                <div class="card-header p-3 pt-2 bg-transparent">
-                                    <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
-                                        <i class="material-icons opacity-10">person_add</i>
-                                    </div>
-                                    <div class="text-end pt-1">
-                                        <p class="text-sm mb-0 text-capitalize ">Followers</p>
-                                        <h4 class="mb-0 ">+91</h4>
-                                    </div>
-                                </div>
+                    
 
-                                <hr class="horizontal my-0 dark">
-                                <div class="card-footer p-3">
-                                    <p class="mb-0 ">Just updated</p>
-                                </div>
+                               
                             </div>
 
                         </div>

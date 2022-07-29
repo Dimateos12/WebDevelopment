@@ -1,56 +1,12 @@
 <?php
-echo "foooo";
+
 include('../config/dbcon.php');
 
 
 session_start();
 
 
-// if (isset($_POST['add_category_btn'])) {
 
-
-//     $name = $_POST['name'];
-//     $slug = $_POST['slug'];
-//     $description = $_POST['description'];
-//     $meta_title = $_POST['meta_title'];
-//     $meta_description = $_POST['meta_description'];
-//     $meta_keywords = $_POST['meta_keywords'];
-//     $status = isset($_POST['status']) ? '1' : '0';
-//     $popular = isset($_POST['popular']) ? '1' : '0';
-
-
-//     $image = $_FILES['image']['name'];
-//     $path = "uploads";
-
-//     $image_ext = pathinfo($image, PATHINFO_EXTENSION);
-//     $filename = time() . '.' . $image_ext;
-
-//     // $cat_query = "INSERT INTO categories
-//     // (name,slug,description,meta_title,meta_description,meta_ketwords,status,popular,image)
-//     // VALUES('$name','$slug','$description','$meta_title','$meta_description','$meta_keywords','$status,'$popular','$image')";
-
-
-//     $cat_query_1 = "INSERT INTO categories
-//         (name,slug,description,status,popular,image,meta_tittle,meta_description,meta_keywords)
-//         VALUES('$name','$slug','$description','$status','$popular','$image','$meta_title','$meta_description','$meta_keywords')";
-
-
-
-
-
-//     $cat_query_run = mysqli_query($con, $cat_query_1);
-
-//     if ($cat_query_run == true) {
-
-
-//         move_uploaded_file($_FILES['image']["tmp_name"], $path . '/' . $filename);
-//         $_SESSION["message"] = "Sucessfuly add";
-//         header("Location: add-category.php");
-//     } else {
-//         // $_SESSION["message"] = "added failed";
-//         // header("Location: add-category.php");
-//     }
-// } 
 if(isset($_POST['add_category_btn']))
     {
         echo "test2";
@@ -176,7 +132,7 @@ else if (isset($_POST['update_category_btn'])) {
 
     $cat_query_1 = "INSERT INTO categories_del
         (name,slug,description,status,popular,image,meta_tittle,meta_description,meta_keywords)
-        VALUES('$name','$slug','$description','$status','$popular','$image','$meta_title','$meta_description','$meta_keywords')";
+        VALUES('$name','$slug','$description','$status','$popular','$filename','$meta_title','$meta_description','$meta_keywords')";
 
     $cat_query_run = mysqli_query($con, $cat_query_1);
 
@@ -238,7 +194,7 @@ else if (isset($_POST['update_category_btn'])) {
 } else if (isset($_POST['update_product_btn'])) {
 
 
-        $path = "uploads";
+    $path = "uploads";
 
     $product_id = $_POST['product_id'];
 
@@ -297,10 +253,10 @@ else if (isset($_POST['update_category_btn'])) {
             move_uploaded_file($_FILES['image']['tmp_name'], $path . '/' . $new_image);
             if (file_exists(("uploads/" . $old_image))) {
                 unlink("uploads/" . $old_image);
-                echo "test";
+             
             }
         };
-        echo "test";
+    
         $_SESSION['message'] = "Product updated";
         header("Location: edit-product.php?id=$product_id");
     } else {
@@ -308,49 +264,20 @@ else if (isset($_POST['update_category_btn'])) {
         original_price: '$original_price', selling_price: '$selling_price','qty: $qty',meta title: '$meta_title', metadescription '$meta_description'
         ,meta keywords: '$meta_keywords',status: '$status', trending: '$trending' obrazek: '$image' ";
     }
-}else if (isset($_POST['done_purchase_btn'])) {
+}
+else if (isset($_POST['delete_product_btn'])){
 
-    echo="foo";
-    /*$purchase_id = $_POST['purchase_id'];
 
-    $query = "SELECT created_at, id_user, id FROM purchases WHERE id='$purchase_id'";
-    $query_run = mysqli_query($con, $query);
 
-    if (mysqli_num_rows($query_run) > 0) {
-
-        foreach($query_run as $item)
-        {
-            $created_at = $item['created_at'];
-            $id_user = $item['id_user'];
-            $id = $item['id'];
-        }
-
-        $history_query = "INSERT INTO history_purchases (created_at, id_user, purchase_id) VALUES ('$created_at', '$id_user', '$id')";
-        $history_query_run = mysqli_query($con, $history_query);
-
+    $product_id = mysqli_real_escape_string($con, $_POST['product_id']);
+    $delete_query = "DELETE FROM products WHERE id='$product_id'";
+    $delete_query_run = mysqli_query($con, $delete_query);
+    
+    if ($delete_query_run) {
+        $_SESSION['message'] = "Products deleted";
+        header("Location: products.php");
     } else {
-        echo "nooooo";
+        $_SESSION['message'] = "Something went wrong";
+        header("Location: products.php");
     }
-
-    $query = "SELECT product_id, purchase_id, product_qny FROM products_in_purchases WHERE purchase_id='$purchase_id'";
-    $query_run = mysqli_query($con, $query);
-
-    if (mysqli_num_rows($query_run) > 0) {
-
-        foreach($query_run as $item)
-        {
-            $product_id = $item['product_id'];
-            $purchase_id = $item['purchase_id'];
-            $product_qny = $item['product_qny'];
-        }
-
-        /*$product_history_query = "INSERT INTO history_purchases (created_at, id_user, purchase_id) VALUES ('$product_id', '$purchase_id', '$product_qny')";
-        $product_history_query_run = mysqli_query($con, $product_history_query);
-
-    } else {
-        echo "noonoo";
-    }*/
-
-};
-
-?>
+}

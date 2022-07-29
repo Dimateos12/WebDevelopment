@@ -186,7 +186,7 @@ if(mysqli_num_rows($query_run)> 0 ) {
 </div>
 <div class="row2-container">
     <div class="box orange">
-        <h2>Add opinion</h2>
+    <a href="opinion.php"> <h2>Opinion</h2> </a>
         <p></p>
         <img src="https://assets.codepen.io/2301174/icon-karma.svg" alt="">
     </div>

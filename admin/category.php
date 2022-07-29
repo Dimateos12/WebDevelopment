@@ -43,11 +43,11 @@ include('../config/dbcon.php');
                 </thead>
                 <tbody>
                     <?php
-                 
+
                  $categories = "categories";
                     $query = "SELECT * FROM $categories";
                     $category= mysqli_query($con,$query);
-                   
+
                     if(mysqli_num_rows($category) > 0)
                     {
                         foreach($category as $item)
@@ -60,7 +60,7 @@ include('../config/dbcon.php');
                                 <img src="uploads/<?= $item['image']; ?>" width = 50px; height=70px; alt="<?= $item['image']; ?>">
                             </td>
                             <td><?= $item['status'] == '0' ? "Visible": "Hidden"; ?></td>
-                           
+
                             <td>
                                 <a href="edit-category.php?id=<?= $item['id']; ?>" class="btn btn-primary"> Edit</a>
                                 <form action="code.php" method="POST">

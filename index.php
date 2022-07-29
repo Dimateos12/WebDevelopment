@@ -20,15 +20,9 @@ include("latestWatches.php");
 
 <?php
 include("aboutUS.php");
+
 ?>
 </section>
-
-
-
-
-
-
-
 
 <section class="feature_section layout_padding">
     <div class="container">
@@ -113,4 +107,6 @@ include("aboutUS.php");
   </section>
 
 
-<?php include("includes/footer.php"); ?>
+<?php 
+include("customercomments.php");
+include("includes/footer.php"); ?>
