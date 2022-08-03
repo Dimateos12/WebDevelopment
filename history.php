@@ -31,9 +31,6 @@ include('config/dbcon.php');
                   <thead>
                       <tr>
                           <th>
-                              ID
-                          </th>
-                          <th>
                               Products and Qny
                           </th>
                           <th>
@@ -57,13 +54,12 @@ include('config/dbcon.php');
                           {
                               ?>
                               <tr>
-                              <td><?= $item['pu_id']; ?></td>
                               <td>
                                   <table class="table table-border">
 
                                       <?php
                                           $pur_id = $item['pu_id'];
-                                          $product_query = "SELECT m.product_id as pr_id, m.product_qny as pr_qny FROM purchases p, products_in_purchases m WHERE p.id=m.purchase_id AND p.id=$pur_id";
+                                          $product_query = "SELECT b.name as pr_id, m.product_qny as pr_qny FROM purchases p, products_in_purchases m, products b WHERE p.id=m.purchase_id AND m.product_id=b.id AND p.id=$pur_id";
                                           $product_query_run = mysqli_query($con,$product_query);
 
                                           foreach($product_query_run as $product){
@@ -97,13 +93,12 @@ include('config/dbcon.php');
                           {
                               ?>
                               <tr>
-                              <td><?= $item['pu_id']; ?></td>
                               <td>
                                   <table class="table table-border">
 
                                       <?php
                                           $pur_id = $item['pu_id'];
-                                          $product_query = "SELECT m.product_id as pr_id, m.product_qny as pr_qny FROM history_purchases p, products_in_history m WHERE p.purchase_id=m.purchase_id AND p.purchase_id=$pur_id";
+                                          $product_query = "SELECT b.name as pr_id, m.product_qny as pr_qny FROM history_purchases p, products_in_history m, products b WHERE p.purchase_id=m.purchase_id AND m.product_id=b.id AND p.purchase_id=$pur_id";
                                           $product_query_run = mysqli_query($con,$product_query);
 
                                           foreach($product_query_run as $product){

@@ -199,7 +199,7 @@ background-color: #4285f4;
 
                 <div class="d-flex justify-content-between p-2 mb-2" style="background-color: #e1f5fe;">
                   <h5 class="fw-bold mb-0">Total:</h5>
-                  <h5 class="fw-bold mb-0"><?= $tot?> $</h5>
+                  <h5 id="mytot" class="fw-bold mb-0"><?= $tot?> $</h5>
                 </div>
 
               </div>
@@ -235,10 +235,6 @@ background-color: #4285f4;
                   </div>
 
                   <button type="submit" class="btn btn-primary btn-block btn-lg">Buy now</button>
-
-                  <h5 class="fw-bold mb-5" style="position: absolute; bottom: 0;">
-                    <a href="/index.php"><i class="fas fa-angle-left me-2"></i>Back to shopping</a>
-                  </h5>
 
                 </form>
 

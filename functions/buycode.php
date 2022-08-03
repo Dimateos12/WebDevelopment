@@ -2,6 +2,46 @@
 
     session_start();    
     include('../config/dbcon.php');
+    
+    function validatecard($number)
+    {
+        global $type;
+
+        $cardtype = array(
+            "visa"       => "/^4[0-9]{12}(?:[0-9]{3})?$/",
+            "mastercard" => "/^5[1-5][0-9]{14}$/",
+            "amex"       => "/^3[47][0-9]{13}$/",
+            "discover"   => "/^6(?:011|5[0-9]{2})[0-9]{12}$/",
+        );
+
+        if (preg_match($cardtype['visa'],$number))
+        {
+        $type= "visa";
+            return 'visa';
+        
+        }
+        else if (preg_match($cardtype['mastercard'],$number))
+        {
+        $type= "mastercard";
+            return 'mastercard';
+        }
+        else if (preg_match($cardtype['amex'],$number))
+        {
+        $type= "amex";
+            return 'amex';
+        
+        }
+        else if (preg_match($cardtype['discover'],$number))
+        {
+        $type= "discover";
+            return 'discover';
+        }
+        else
+        {
+            return false;
+        } 
+    }
+
 
     if(isset($_SESSION['auth'])){
         
@@ -13,10 +53,9 @@
         $exp = mysqli_real_escape_string($con, $_POST['exp']);
         $cvv = mysqli_real_escape_string($con, $_POST['cvv']);
         
-        $check_query = "SELECT * FROM credit_card WHERE number='$number' AND owner_name='$name' AND expiration='$exp' AND cvv='$cvv' AND user_id='$user_id'";
-        $check_query_run = mysqli_query($con, $check_query);
+        
 
-        if(mysqli_num_rows($check_query_run) >0){
+        if(preg_match('#([0-9]{4}[- ]?){3}[0-9]{4}#',$number) && preg_match('#\d{2}\/\d{2}#',$exp) && preg_match('#\d{3}#',$cvv)){
 
             $insert_query = "INSERT INTO purchases (id_user) VALUES($user_id)";
             $insert_query_run = mysqli_query($con,$insert_query);

@@ -81,7 +81,9 @@ $(document).ready(function (){
                 "scope" : "update"
             },
             success: function(response){
-                
+                if(response == 200){
+                    $('#mytot').load(location.href + " #mytot");
+                } 
             }
         });
     })
@@ -110,5 +112,40 @@ $(document).ready(function (){
             }
         });
     })
+
+    $(document).on('click','.buy-btn', function (e){
+        e.preventDefault();
+        
+        var qty = $(this).closest('.product_data').find('.input-qty').val();
+        var prod_id = $(this).val();
+
+        $.ajax({
+            method: "POST",
+            url: "functions/handlecart.php",
+            data: {
+                "prod_id" : prod_id,
+                "prod_qty" : qty,
+                "scope" : "add"
+            },
+            success: function(response){
+                if(response == 201){
+                    alertify.success("Product added to cart");
+                } 
+                else if(response == "existing"){
+                    alertify.success("Product already in cart");
+                } 
+                else if(response == 401){
+                    alertify.success("Login to continue");
+                }
+                else if(response == 500){
+                    alertify.success("Something went wrong");
+                }
+                else if(response == 100){
+                    alertify.success("Foo");
+                }
+            }
+        });
+
+    });
 
 });

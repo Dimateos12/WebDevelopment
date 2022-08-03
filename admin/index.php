@@ -71,14 +71,26 @@ include('../middleware/adminMiddleware.php');
                                         <i class="material-icons opacity-10">leaderboard</i>
                                     </div>
                                     <div class="text-end pt-1">
-                                        <p class="text-sm mb-0 text-capitalize">Bought</p>
-                                        <h4 class="mb-0">2,300</h4>
+                                        <p class="text-sm mb-0 text-capitalize">Total purchases</p>
+                                        <?php
+
+
+                                        $result = mysqli_query($con, "SELECT COUNT(*) AS `count` FROM `history_purchases`");
+                                        $row = mysqli_fetch_array($result);
+                                        $count = $row['count'];
+
+
+                                        if (mysqli_num_rows($result) > 0) {
+
+                                        ?>
+                                            <h4 class="mb-0"><?= $count ?></h4>
+                                        <?php } ?>
                                     </div>
                                 </div>
 
                                 <hr class="dark horizontal my-0">
                                 <div class="card-footer p-3">
-                                    <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+3% </span>than last month</p>
+                                   
                                 </div>
                             </div>
 
